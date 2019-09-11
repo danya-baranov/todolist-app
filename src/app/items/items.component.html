@@ -1,0 +1,28 @@
+<h2>My Todo List</h2>
+<div>
+        <label>Item name:
+          <input #itemName />
+        </label>
+
+        <button (click)="add(itemName.value); itemName.value=''">
+          add
+        </button>
+</div>
+
+
+
+
+
+
+<ul class="items">
+    <li *ngFor="let item of items">
+            <a routerLink="/detail/{{item.id}}">
+                <span class="badge">{{item.id}}</span>
+                {{item.title}}
+            </a>
+            <button class="delete" title="delete hero"
+            (click)="delete(item)">x</button>
+    </li>
+</ul>
+
+<app-item-detail [item]="selectedItem"></app-item-detail>
