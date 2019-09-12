@@ -1,15 +1,28 @@
+<div class="container">
+
 <div *ngIf="item">
 
-    <h2>{{item.title | uppercase}} Details</h2>
-    <div><span>id:</span>{{item.id}}</div>
+    <h2>{{item.title}} Details</h2>
+    
+     
+    
     <div>
-        <label>name:
-            <input [(ngModel)]="item.title" placeholder="title">
-        </label>
-        <label>description:
-            <input [(ngModel)]="item.description" placeholder="description">
-        </label>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input #itemName matInput placeholder="Todo Title" value="" [(ngModel)]="item.title" placeholder="title">
+        </mat-form-field>
+      
+        <mat-form-field class="example-full-width">
+          <textarea #itemDescription matInput placeholder="Leave a comment"  [(ngModel)]="item.description" placeholder="description"></textarea>
+        </mat-form-field>
+    </form>
     </div>
-    <button (click)="goBack()">go back</button>
-    <button (click)="save()">save</button>
+
+
+
+
+    <button mat-button color="primary" (click)="goBack()">goBack</button>
+    <button mat-button color="primary"  (click)="save()">save</button>
+</div>
+
 </div>

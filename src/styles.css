@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/@angular/material/prebuilt-themes/purple-green.css';
+.container{
+    width: 25% ;
+    margin: 0 auto;
+    text-align: center; 
+    background-color: #b1abb3
+  }
+
