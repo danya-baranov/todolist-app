@@ -10,8 +10,14 @@ import { ItemService } from '../item.service';
 export class ItemsComponent implements OnInit {
 
   items: Item[];
+  isChecked = true;
 
   constructor(private itemService : ItemService) { }
+
+  onChange($event):void{
+    console.log('$event');
+    
+  }
 
   ngOnInit() {
     this.getItems();
@@ -22,11 +28,20 @@ export class ItemsComponent implements OnInit {
         .subscribe(items => this.items = items);
   }
 
-  add(title: string):void{
-    title = title.trim();
-    
-    if(!title){return;}
-    this.itemService.addItem({title} as Item).
+  addItem(title: string, description:string):void{
+    let tempItem = new Item();
+    if(!title)
+    {
+      return;
+    }
+    if(!description)
+    {
+      return;
+    }
+    tempItem.title = title.trim();
+    tempItem.description = description.trim()
+
+    this.itemService.addItem(tempItem).
     subscribe(item =>{
       this.items.push(item);
     });

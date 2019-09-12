@@ -1,28 +1,39 @@
-<h2>My Todo List</h2>
-<div>
-        <label>Item name:
-          <input #itemName />
-        </label>
-
-        <button (click)="add(itemName.value); itemName.value=''">
-          add
-        </button>
+<div class="container">
+    <h2>My Todo List</h2>
+    <div>
+      <form action="">
+          <label>Item name:
+              <input #itemName />
+            </label>
+            <label>Item description:
+              <input #itemDescription />
+            </label>
+      </form>
+           
+    
+            <button class="add" (click)="addItem(itemName.value,itemDescription.value)"
+            >
+              Add
+            </button>
+    </div>
+    
+    
+    
+    
+    
+    
+    <ul class="items">
+        <li *ngFor="let item of items">
+            <input type="checkbox" [checked]="checked" [value]="" (change)="onChange($event)">
+                <a class="todoItem" routerLink="/detail/{{item.id}}">
+                    <!-- <span class="badge">{{item.id}}</span> -->
+                    {{item.title}}
+                    {{item.description}}
+                </a>
+                <button class="delete" title="delete hero"
+                (click)="delete(item)">x</button>
+        </li>
+    </ul>
+    
+    <app-item-detail [item]="selectedItem"></app-item-detail>
 </div>
-
-
-
-
-
-
-<ul class="items">
-    <li *ngFor="let item of items">
-            <a routerLink="/detail/{{item.id}}">
-                <span class="badge">{{item.id}}</span>
-                {{item.title}}
-            </a>
-            <button class="delete" title="delete hero"
-            (click)="delete(item)">x</button>
-    </li>
-</ul>
-
-<app-item-detail [item]="selectedItem"></app-item-detail>
